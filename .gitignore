@@ -8,3 +8,7 @@ out/
 bin/
 .myeclipse
 */target
+*.cmd
+*/mvnw
+*/.gitignore
+/spring-shell/.mvn/
