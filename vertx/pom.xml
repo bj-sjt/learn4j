@@ -154,8 +154,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
             <plugin> <!-- 指定主类 -->

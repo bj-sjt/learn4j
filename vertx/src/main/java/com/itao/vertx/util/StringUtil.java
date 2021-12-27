@@ -53,4 +53,13 @@ public class StringUtil {
     return sb.toString();
   }
 
+  /**
+   * 判断一个字符串是否是 null 或 "" 或 "  "
+   * @param text 指定的字符串
+   * @return true or false
+   */
+  public boolean isNotBlank(String text) {
+    return text != null && "".equals(text.trim());
+  }
+
 }

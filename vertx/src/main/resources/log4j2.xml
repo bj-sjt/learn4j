@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="info" monitorInterval="30">
+  <Properties>
+    <Property name="LOG_DIR">D:/logs</Property>
+  </Properties>
+
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+
+    <RollingFile name="file_debug" fileName="${LOG_DIR}/log_debug.log"
+                 filePattern="${LOG_DIR}/$${date:yyyy-MM-dd}/log_debug-%d{yyyy-MM-dd}-%i.log.zip">
+      <!-- 只打印debug级别的日志信息 -->
+      <Filters>
+        <ThresholdFilter level="info" onMatch="DENY" onMisMatch="NEUTRAL"/>
+        <ThresholdFilter level="warn" onMatch="DENY" onMisMatch="NEUTRAL"/>
+        <ThresholdFilter level="error" onMatch="DENY" onMisMatch="NEUTRAL"/>
+        <ThresholdFilter level="debug" onMatch="ACCEPT" onMisMatch="DENY"/>
+      </Filters>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <Policies>
+        <!-- 每次重新启动时触发翻转，但前提是文件大小大于零。 -->
+        <!--<OnStartupTriggeringPolicy/>-->
+        <SizeBasedTriggeringPolicy size="100MB"/>
+        <TimeBasedTriggeringPolicy/>
+      </Policies>
+      <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+      <DefaultRolloverStrategy max="20">
+        <!-- 删除过期文件 basePath 基础路径  maxDepth 目录深度-->
+        <Delete basePath="${LOG_DIR}/" maxDepth="2">
+          <!-- log.zip 结尾的文件-->
+          <IfFileName glob="*.log.zip"/>
+          <!-- 天数 -->
+          <IfLastModified age="1d"/>
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+
+    <RollingFile name="file_info" fileName="${LOG_DIR}/log_info.log"
+                 filePattern="${LOG_DIR}/$${date:yyyy-MM-dd}/log_info-%d{yyyy-MM-dd}-%i.log">
+      <!-- 只打印info及以上级别的日志信息 -->
+      <ThresholdFilter level="info" onMatch="ACCEPT" onMisMatch="DENY"/>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <Policies>
+        <!-- <OnStartupTriggeringPolicy/> -->
+        <SizeBasedTriggeringPolicy size="100MB"/>
+        <TimeBasedTriggeringPolicy/>
+      </Policies>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <AsyncLogger name="com.itao.vertx" level="debug" additivity="false">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="file_debug"/>
+      <AppenderRef ref="file_info"/>
+    </AsyncLogger>
+    <Root level="error">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</configuration>
