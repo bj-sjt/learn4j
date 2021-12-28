@@ -12,3 +12,4 @@ bin/
 */mvnw
 */.gitignore
 /spring-shell/.mvn/
+*.log
