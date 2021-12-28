@@ -12,11 +12,12 @@ public class FutureVerticle extends AbstractVerticle {
     public void start(Promise<Void> startPromise) throws Exception {
         var fs = vertx.fileSystem();
         var classpath = ResourceUtil.classPath(FutureVerticle.class);
-        var fooPath = classpath + File.separator + "foo.txt";
-        var barPath = classpath + File.separator + "bar.txt";
+        var fooPath = classpath + "foo.txt";
+        var barPath = classpath + "bar.txt";
         fs.createFile(fooPath)
                 .compose(v -> fs.writeFile(fooPath, Buffer.buffer("Hello Vertx")))
                 .compose(v -> fs.move(fooPath, barPath))
+                .compose(v -> fs.delete(barPath))
                 .onComplete(ar -> {
                     if (ar.succeeded()) {
                         System.out.println("success");
