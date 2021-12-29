@@ -28,8 +28,6 @@ public class StreamVerticle extends AbstractVerticle {
               log.info(res.bodyAsString());
             });
         });
-
-
       }
     });
   }

@@ -7,6 +7,7 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.FaviconHandler;
 import io.vertx.ext.web.handler.SessionHandler;
+import io.vertx.ext.web.handler.StaticHandler;
 import io.vertx.ext.web.sstore.SessionStore;
 import io.vertx.ext.web.templ.thymeleaf.ThymeleafTemplateEngine;
 
@@ -19,7 +20,7 @@ public class TemplateVerticle extends AbstractVerticle {
     Router router = Router.router(vertx);
     SessionStore store = SessionStore.create(vertx);
     router.route().handler(SessionHandler.create(store));
-    //router.route("/*").handler(StaticHandler.create());
+    router.route("/*").handler(StaticHandler.create());
     router.route("/favicon.ico").handler(FaviconHandler.create(vertx));
     router.route("/template").handler(ctx -> {
       JsonObject jsonObject = new JsonObject()

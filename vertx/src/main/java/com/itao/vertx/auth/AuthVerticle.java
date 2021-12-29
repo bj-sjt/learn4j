@@ -41,7 +41,7 @@ public class AuthVerticle extends AbstractVerticle {
     SqlAuthentication sqlAuth = SqlAuthentication.create(sqlClient, authenticationOptions);
     SqlAuthorization sqlAuthZ = SqlAuthorization.create(sqlClient, authorizationOptions);
 
-    // 对密码加密  id 可选{ sha1, pbkdf2, sha256, sha512}
+    // 对密码加密  id 可选{sha1, pbkdf2, sha256, sha512}
     String hash = sqlAuth.hash(
       "sha256", // hashing algorithm (OWASP recommended)
       VertxContextPRNG.current().nextString(32), // secure random salt
