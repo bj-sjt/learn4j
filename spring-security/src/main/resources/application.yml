@@ -1,0 +1,10 @@
+spring:
+  redis:
+    host: 82.156.194.95
+    password: 123456
+    database: 0
+server:
+  servlet:
+    session:
+      cookie:
+        max-age: 3600  # 一小时 单位秒

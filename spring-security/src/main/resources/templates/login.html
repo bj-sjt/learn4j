@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}"/>
+</head>
+<body>
+<h1 class="login">login</h1>
+<form action="/user/login" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <label for="username">用户名</label><input type="text" id="username" name="user" /><br/>
+    <label for="password">用户名</label><input type="password" id="password" name="pass" /><br/>
+    <input type="submit" value="登录" />
+</form>
+</body>
+</html>
