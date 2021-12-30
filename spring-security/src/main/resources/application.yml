@@ -1,10 +1,11 @@
 spring:
   redis:
-    host: localhost
+    host: 82.156.194.95
     password: 123456
     database: 0
 server:
+  port: 8083
   servlet:
     session:
       cookie:
-        max-age: 3600  # 一小时 单位秒
+        max-age: 3600
