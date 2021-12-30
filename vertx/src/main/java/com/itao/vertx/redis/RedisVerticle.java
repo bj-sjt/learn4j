@@ -14,8 +14,8 @@ public class RedisVerticle extends AbstractVerticle {
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
     RedisOptions redisOptions = new RedisOptions();
-    redisOptions.setEndpoints(Collections.singletonList("redis://82.156.194.95:6379"));
-    Redis.createClient(vertx, "redis://82.156.194.95:6379")
+    redisOptions.setEndpoints(Collections.singletonList("redis://localhost:6379"));
+    Redis.createClient(vertx, "redis://localhost:6379")
       .connect(ar -> {
         if (ar.succeeded()) {
           var connection = ar.result();

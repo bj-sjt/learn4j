@@ -16,12 +16,8 @@ public class MailVerticle extends AbstractVerticle {
     config.setSsl(true);
     config.setPort(465);
     config.setStarttls(StartTLSOptions.DISABLED);
-    //config.setLogin(LoginOption.REQUIRED);
     config.setUsername("itao008@163.com");
-    //wuntcqgivybebgib  47
-    //sqytlxmdbtjbbgdd  32
-    //GAQHEOUSIRXZUUKI  163
-    config.setPassword("GAQHEOUSIRXZUUKI");
+    config.setPassword("123445");
     //config.set
     config.setConnectTimeout(3000);
     MailClient mailClient = MailClient.createShared(vertx, config, "test");
