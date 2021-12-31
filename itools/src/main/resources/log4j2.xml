@@ -51,10 +51,10 @@
   </Appenders>
 
   <Loggers>
-    <AsyncLogger name="com.itao.socket" level="debug" additivity="false">
+    <AsyncLogger name="com.itao" level="debug" additivity="false">
       <AppenderRef ref="Console"/>
-      <AppenderRef ref="file_debug"/>
-      <AppenderRef ref="file_info"/>
+      <!--<AppenderRef ref="file_debug"/>
+      <AppenderRef ref="file_info"/>-->
     </AsyncLogger>
     <Root level="error">
       <AppenderRef ref="Console"/>

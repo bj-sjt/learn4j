@@ -1,0 +1,12 @@
+#set($greet = 'hello')
+$greet $name
+#foreach($i in $list)
+    $velocityCount
+    $i
+    $abc
+    $!{abc}
+#end
+#macro(sayHello $name1 $name2)
+hello $name1 $name2
+#end
+#sayHello("velocity1" "velocity2")

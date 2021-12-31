@@ -1,0 +1,2 @@
+#include("foo.vm")
+$!{name}
