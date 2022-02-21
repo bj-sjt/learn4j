@@ -14,7 +14,7 @@ import static net.sourceforge.pinyin4j.format.HanyuPinyinVCharType.WITH_U_UNICOD
 public class Pinyin {
 
     public static void main(String[] args) throws Exception {
-        //PinyinUtil
+        pinyin();
     }
 
     private static void pinyin() throws BadHanyuPinyinOutputFormatCombination {

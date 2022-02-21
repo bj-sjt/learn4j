@@ -8,7 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@RestController
+@RestController()
+@RequestMapping("/jpa")
 @AllArgsConstructor
 @Slf4j
 public class UserController {
