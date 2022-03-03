@@ -14,9 +14,9 @@ public class CLITest {
     public static void main(String[] args) {
         CLI cli = CLI.create("test")
                 .addOption(
-                        new Option().setLongName("help").setShortName("h").setFlag(true).setHelp(true))
+                        new Option().setLongName("help").setShortName("h").setFlag(true))
                 .addOption(
-                        new Option().setLongName("mandatory").setShortName("m").setRequired(true).setDefaultValue("123"))
+                        new Option().setLongName("mandatory").setShortName("m").setDefaultValue("123"))
                 .addArgument(
                         new Argument().setArgName("itao").setIndex(0).setRequired(true))
                 .addArgument(
@@ -38,12 +38,14 @@ public class CLITest {
         }*/
 
        /* while (true) {*/
-            String opt = line.getOptionValue("mandatory");
+            String mandatory = line.getOptionValue("mandatory");
             boolean flag = line.isFlagEnabled("help");
-            String arg0 = line.getArgumentValue("exit");
-            System.out.println(opt);
+            String arg1 = line.getArgumentValue("exit");
+            String arg0 = line.getArgumentValue("itao");
+            System.out.println(mandatory);
             System.out.println(flag);
             System.out.println(arg0);
+            System.out.println(arg1);
             /*if ("exit".equals(arg0)) {
                 break;
             }

@@ -16,6 +16,8 @@ public class HttpServerVerticle extends AbstractVerticle {
       System.out.println("User agent is " + headers.get("user-agent"));
       // 这样做可以得到和上边相同的结果
       System.out.println("User agent is " + headers.get("User-Agent"));
+      //request.pipeTo(request.response());
+      request.response().end("end");
     });
 
     server.listen(8080, "localhost",ar -> {

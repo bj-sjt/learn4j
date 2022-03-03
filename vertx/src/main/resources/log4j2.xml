@@ -56,7 +56,7 @@
       <AppenderRef ref="file_debug"/>
       <AppenderRef ref="file_info"/>
     </AsyncLogger>
-    <Root level="error">
+    <Root level="info">
       <AppenderRef ref="Console"/>
     </Root>
   </Loggers>

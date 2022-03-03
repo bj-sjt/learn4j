@@ -12,8 +12,8 @@ public class EventBus2Verticle extends AbstractVerticle {
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
     var eventBus = vertx.eventBus();
-    eventBus.consumer("itao.eventbus", mes -> {
-      String body = (String) mes.body();
+    eventBus.<String>consumer("itao.eventbus", mes -> {
+      String body = mes.body();
       log.info(body);
       if("reply".equals(body)){
         mes.reply("received2");
