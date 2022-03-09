@@ -14,11 +14,12 @@ public class CglibProxyClass {
             System.out.println("invoke before");
             Object invokeSuper = proxy.invokeSuper(obj, args1);  // 调用父类的方法
             System.out.println("invoke after");
+            System.out.println("返回值" + invokeSuper);
             return invokeSuper;
         });
 
         Greeting greeting = (Greeting) enhancer.create();   // 创建代理
-        greeting.hello("Alice");    //会调用Callback具体实现类的方法
+        greeting.hello1("Alice");    //会调用Callback具体实现类的方法
 
     }
 }

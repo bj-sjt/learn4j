@@ -12,7 +12,7 @@ public class RerouteVerticle extends AbstractVerticle {
     log.info("{}", vertx);
     var httpServer = vertx.createHttpServer();
     var router = Router.router(vertx);
-    router.get("/some/path").handler(ctx -> {
+    router.get("/some/path/*").handler(ctx -> {
 
       ctx.put("foo", "bar");
       ctx.next();
@@ -20,13 +20,24 @@ public class RerouteVerticle extends AbstractVerticle {
     });
 
     router
-      .get("/some/path/B")
-      .handler(ctx -> ctx.response().end((String)ctx.get("foo")));
+      .get("/some/path/b")
+      .handler(ctx -> {
+        boolean reroute = ctx.get("reroute") != null && (boolean)ctx.get("reroute");
+        if (reroute) {
+          ctx.response().end("reroute");
+        } else {
+          ctx.response().end((String) ctx.get("foo"));
+        }
+      });
 
     router
       .get("/some/path")
-      .handler(ctx -> ctx.reroute("/some/path/B"));
+      .handler(ctx -> {
+        ctx.put("reroute", true);
+        ctx.reroute("/some/path/b");
+      });
 
+    router.errorHandler(404, ctx -> ctx.end("not found"));
     httpServer.requestHandler(router).listen(8080);
   }
 

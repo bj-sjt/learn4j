@@ -1,6 +1,8 @@
 package com.itao.vertx.web;
 
+import com.itao.vertx.bean.User;
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Future;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServerOptions;
 import io.vertx.ext.web.Router;
@@ -31,9 +33,17 @@ public class RouterVerticle extends AbstractVerticle {
             ctx.response().end("b");
         });
 
-        router.errorHandler(403, ctx -> {
-            log.error("error 404");
-        });
+        router.route("/c").respond(ctx ->
+                ctx.response().write("end")
+        );
+
+        router.route("/d").respond(ctx ->
+                Future.succeededFuture(new User())
+        );
+
+        router.errorHandler(403, ctx ->
+            log.error("error 404")
+        );
 
         httpServer.requestHandler(router).listen(8080, ar -> {
             if (ar.succeeded()) {
