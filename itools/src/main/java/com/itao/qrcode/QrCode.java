@@ -1,4 +1,4 @@
-package com.itao.reflection.qrcode;
+package com.itao.qrcode;
 
 import cn.hutool.extra.qrcode.QrCodeUtil;
 
