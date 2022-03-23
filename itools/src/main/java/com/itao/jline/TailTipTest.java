@@ -11,10 +11,7 @@ import org.jline.utils.AttributedString;
 import org.jline.widget.TailTipWidgets;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TailTipTest {
 
@@ -32,11 +29,11 @@ public class TailTipTest {
                 , new AttributedString("widget -U string ...")
                 , new AttributedString("widget -l [options]")
         );
-        widgetOpts.put("-N", Arrays.asList(new AttributedString("Create new widget")));
-        widgetOpts.put("-D", Arrays.asList(new AttributedString("Delete widgets")));
-        widgetOpts.put("-A", Arrays.asList(new AttributedString("Create alias to widget")));
-        widgetOpts.put("-U", Arrays.asList(new AttributedString("Push characters to the stack")));
-        widgetOpts.put("-l", Arrays.asList(new AttributedString("List user-defined widgets")));
+        widgetOpts.put("-N", Collections.singletonList(new AttributedString("Create new widget")));
+        widgetOpts.put("-D", Collections.singletonList(new AttributedString("Delete widgets")));
+        widgetOpts.put("-A", Collections.singletonList(new AttributedString("Create alias to widget")));
+        widgetOpts.put("-U", Collections.singletonList(new AttributedString("Push characters to the stack")));
+        widgetOpts.put("-l", Collections.singletonList(new AttributedString("List user-defined widgets")));
 
         tailTips.put("widget", new CmdDesc(mainDesc, ArgDesc.doArgNames(Arrays.asList("[pN...]")), widgetOpts));
 

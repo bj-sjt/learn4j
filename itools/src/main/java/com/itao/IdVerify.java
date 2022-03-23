@@ -1,5 +1,8 @@
 package com.itao;
 
+/**
+ * 验证身份证是否合法
+ */
 public class IdVerify {
     private static final int[] weight = new int[]{7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10 ,5, 8, 4, 2};
     private static final String[] checkCode = new String[]{"1", "0", "x", "9", "8", "7", "6", "5", "4", "3", "2"};

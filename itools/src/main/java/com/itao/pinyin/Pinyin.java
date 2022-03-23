@@ -4,6 +4,7 @@ import cn.hutool.extra.pinyin.PinyinUtil;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+import net.sourceforge.pinyin4j.multipinyin.MultiPinyinConfig;
 
 import java.util.Arrays;
 
@@ -18,22 +19,31 @@ public class Pinyin {
     }
 
     private static void pinyin() throws BadHanyuPinyinOutputFormatCombination {
+        // 加载自定义的多音词库
+        MultiPinyinConfig.multiPinyinPath = Pinyin.class.getResource("/pinyin/pinyin.txt").getFile();
         HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
         format.setCaseType(LOWERCASE);
         format.setToneType(WITH_TONE_MARK);
         format.setVCharType(WITH_U_UNICODE);
         String pinyin = PinyinHelper
-                .toHanYuPinyinString("疑似'张同学'成立农业发展公司", format, " ", false);
+                .toHanYuPinyinString("将进酒", format, " ", false);
         System.out.println(pinyin);
         String[] s1 = PinyinHelper.toTongyongPinyinStringArray('绿');
         System.out.println(Arrays.toString(s1));
+        String[] s9 = PinyinHelper.toHanyuPinyinStringArray('绿', format);
+        System.out.println(Arrays.toString(s9));
 
-
-        String[] s2 = PinyinHelper.toHanyuPinyinStringArray('绿', format);
+        String[] s2 = PinyinHelper.toHanyuPinyinStringArray('爫', format);
         System.out.println(Arrays.toString(s2));
 
-        String[] s3 = PinyinHelper.toHanyuPinyinStringArray('差');
+        String[] s10 = PinyinHelper.toTongyongPinyinStringArray('爫');
+        System.out.println(Arrays.toString(s10));
+
+        String[] s3 = PinyinHelper.toHanyuPinyinStringArray('差', format);
         System.out.println(Arrays.toString(s3));
+
+        String[] s8 = PinyinHelper.toHanyuPinyinStringArray('差');
+        System.out.println(Arrays.toString(s8));
 
         String[] s4 = PinyinHelper.toGwoyeuRomatzyhStringArray('差');
         System.out.println(Arrays.toString(s4));
