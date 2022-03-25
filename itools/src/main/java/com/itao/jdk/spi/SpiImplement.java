@@ -1,4 +1,4 @@
-package com.itao.spi;
+package com.itao.jdk.spi;
 
 public class SpiImplement implements SpiInterface{
     @Override

@@ -1,4 +1,4 @@
-package com.itao.spi;
+package com.itao.jdk.spi;
 
 public interface SpiInterface {
 
