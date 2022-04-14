@@ -2,7 +2,7 @@ spring:
   redis:
     database: 0
     password: 123456
-    host: 82.156.194.95
+    host: localhost
 
   elasticsearch:
     uris: http://localhost:9200

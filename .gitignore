@@ -13,3 +13,4 @@ bin/
 */.gitignore
 */.mvn/
 *.log
+/file-uploads/

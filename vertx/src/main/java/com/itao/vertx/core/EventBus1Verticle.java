@@ -1,7 +1,10 @@
 package com.itao.vertx.core;
 
+import com.itao.vertx.codec.User;
+import com.itao.vertx.codec.UserCodec;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
+import io.vertx.core.eventbus.DeliveryOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,17 +22,9 @@ public class EventBus1Verticle extends AbstractVerticle {
         startPromise.fail(ar.cause());
       }
     });
-    vertx.deployVerticle(EventBus3Verticle.class.getName(), ar -> {
-      if (ar.succeeded()) {
-        log.info(ar.result());
-      } else {
-        log.error(ar.cause().getMessage());
-        startPromise.fail(ar.cause());
-      }
-    });
     var eventBus = vertx.eventBus();
-    eventBus.publish("itao.eventbus", "send");
-    eventBus.request("itao.eventbus", "reply", ar -> {
+    eventBus.registerCodec(new UserCodec());
+    eventBus.request("itao.eventbus", new User("tom", 18), new DeliveryOptions().setCodecName("userCodec"), ar -> {
       if (ar.succeeded()) {
         log.info("{}", ar.result().body());
       } else {

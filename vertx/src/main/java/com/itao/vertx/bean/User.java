@@ -8,7 +8,7 @@ import io.vertx.sqlclient.templates.annotations.RowMapped;
 
 import java.time.LocalDateTime;
 
-//不能使用 lombok 相关注解
+// 不能使用 lombok 相关注解
 @RowMapped(formatter = SnakeCase.class)
 @ParametersMapped(formatter = SnakeCase.class)
 @DataObject

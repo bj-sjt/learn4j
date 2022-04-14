@@ -1,6 +1,5 @@
-package com.itao.pinyin;
+package com.itao.proxy.pinyin;
 
-import cn.hutool.extra.pinyin.PinyinUtil;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
