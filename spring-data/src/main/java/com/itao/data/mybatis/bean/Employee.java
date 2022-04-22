@@ -26,5 +26,4 @@ public class Employee {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime modifyTime;
-    private Dept dept;
 }
