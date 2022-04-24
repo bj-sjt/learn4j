@@ -21,6 +21,7 @@ public class SwaggerConfig {
     @Bean
     public Docket devDocket(Environment env) {
 
+        // localhost:port/swagger-ui/index.html
         // 设置要暴漏接口文档的配置环境
         Profiles profile = Profiles.of("dev", "dev");
         boolean flag = env.acceptsProfiles(profile);
