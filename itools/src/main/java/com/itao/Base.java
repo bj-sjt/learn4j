@@ -5,7 +5,19 @@ public class Base {
     public static final int a = 1;
 
     public static void main(String[] args) {
-        System.out.println(m1());
+        text();
+    }
+
+    public static void text(){
+        String text = """
+                  行宫
+                  元稹 〔唐代〕
+                  
+                  寥落古行宫，宫花寂寞红。
+                  白头宫女在，闲坐说玄宗。
+                """;
+
+        System.out.println(text);
     }
 
     public static int m1() {
@@ -39,4 +51,5 @@ public class Base {
             this.num = num;
         }
     }
+
 }
