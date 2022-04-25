@@ -11,8 +11,8 @@ public class ClusterStart {
 
     public static void main(String[] args) {
 
+        // 如果导入了集群相关的jar可以不指定 ClusterManager Vertx会自动发现（前提是只有一个）ClusterManager 的jar
         HazelcastClusterManager clusterManager = new HazelcastClusterManager();
-
         VertxOptions options = new VertxOptions().setClusterManager(clusterManager);
         Vertx.clusteredVertx(options, res -> {
             if (res.succeeded()) {
