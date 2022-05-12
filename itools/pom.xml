@@ -12,6 +12,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <java.get.var>123</java.get.var>
     </properties>
 <dependencies>
     <dependency>
@@ -161,5 +162,15 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <!--可以在learn4j-version.txt文件中获取maven属性-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>learn4j-version.txt</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>
