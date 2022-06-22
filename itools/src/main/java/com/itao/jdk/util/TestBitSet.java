@@ -1,4 +1,4 @@
-package com.itao.jdk.tool;
+package com.itao.jdk.util;
 
 import java.util.BitSet;
 
